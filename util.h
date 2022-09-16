@@ -13,20 +13,53 @@
 template <typename T>
 std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 {
+    std::set<T> finalSet;
 
+    // iterate through s1
+    for (typename std::set<T>::iterator it = s1.begin(); 
+         it != s1.end(); ++it)
+        {
+            // if you can find current s1 element in s2, add it to 
+            // set containing the intersection
+            if (s2.find(*it) != s2.end())
+            {
+                finalSet.insert(*it);
+            }
+        }
 
-
-
-
+        return finalSet;
 }
+
 template <typename T>
 std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
 {
+    std::set<T> finalSet;
 
+    // O(n)
+    // iterate through s1
+    for (typename std::set<T>::iterator it = s1.begin(); 
+         it != s1.end(); ++it)
+        {
+            // immediately add s1 to set containing the union
+            finalSet.insert(*it);
+        }
 
+    // O(n * log(n))
+    // iterate through s2
+    for (typename std::set<T>::iterator it = s2.begin(); 
+         it != s2.end(); ++it)
+        {
+            // if you can't find element from s2 in s1, add it to
+            // set containing the union
+            if (s1.find(*it) == s1.end())
+            {
+                finalSet.insert(*it);
+            }
+        }
 
+    // Time Complexity: O(2n * logn) --> O(n * log(n))
 
-
+    return finalSet;
 }
 
 /***********************************************/
