@@ -78,8 +78,17 @@ int main(int argc, char* argv[])
                     term = convToLower(term);
                     terms.push_back(term);
                 }
-                hits = ds.search(terms, 0);
-                displayProducts(hits);
+
+                // if just AND is entered, notify user
+                if (terms.size() == 0)
+                {
+                    cerr << "No keywords entered!" << endl;
+                } else
+                {
+                    hits = ds.search(terms, 0);
+                    displayProducts(hits);
+                }
+                
             }
             else if ( cmd == "OR" ) {
                 string term;
@@ -88,8 +97,16 @@ int main(int argc, char* argv[])
                     term = convToLower(term);
                     terms.push_back(term);
                 }
-                hits = ds.search(terms, 1);
-                displayProducts(hits);
+
+                // if just OR is entered, notify user
+               if (terms.size() == 0)
+                {
+                    cerr << "No keywords entered!" << endl;
+                } else
+                {
+                    hits = ds.search(terms, 0);
+                    displayProducts(hits);
+                }
             }
             else if ( cmd == "QUIT") {
                 string filename;
