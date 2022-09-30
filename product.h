@@ -1,6 +1,7 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <set>
 #include <vector>

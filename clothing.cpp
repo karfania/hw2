@@ -63,8 +63,9 @@ std::string Clothing::displayString() const
     display.append("\n");
 
     // Third Line
-    display.append(std::to_string(price_));
-    display.append(" ");
+    std::string price = std::to_string(price_);
+    std::string priceFormatted = price.substr(0, price.size()-4);
+    display.append(priceFormatted + " ");
     display.append(std::to_string(qty_));
     display.append(" left.");
 
@@ -74,6 +75,7 @@ std::string Clothing::displayString() const
 // Dump Function
 void Clothing::dump(std::ostream& os) const
 {
-    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << 
-    size_ << brand_ << std::endl;
+    os << category_ << "\n" << name_ << "\n" << std::fixed << std::showpoint 
+    << std::setprecision(2) << price_ << "\n" << qty_ << 
+    "\n" << size_ << "\n" << brand_ << std::endl;
 }

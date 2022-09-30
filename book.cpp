@@ -62,8 +62,9 @@ std::string Book::displayString() const
     display.append("\n");
 
     // Third Line
-    display.append(std::to_string(price_));
-    display.append(" ");
+    std::string price = std::to_string(price_);
+    std::string priceFormatted = price.substr(0, price.size()-4);
+    display.append(priceFormatted + " ");
     display.append(std::to_string(qty_));
     display.append(" left.");
 
@@ -73,6 +74,7 @@ std::string Book::displayString() const
 // Dump Function
 void Book::dump(std::ostream& os) const
 {
-    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << 
-    isbn_ << author_ << std::endl;
+    os << category_ << "\n" << name_ << "\n" << std::fixed << std::showpoint 
+    << std::setprecision(2) << price_ << "\n" << qty_ << 
+    "\n" << isbn_ << "\n" << author_ << std::endl;
 }
