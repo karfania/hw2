@@ -145,6 +145,7 @@ int main(int argc, char* argv[])
                 if (ss >> userName)
                 {
                     ds.viewCart(convToLower(userName));
+               
                 }
             }
 
@@ -153,8 +154,10 @@ int main(int argc, char* argv[])
                 string userName;
                 if (ss >> userName)
                 {
+
                     ds.buyCart(convToLower(userName));
                 }
+    
             }
 
             else {
