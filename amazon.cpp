@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
                     cerr << "No keywords entered!" << endl;
                 } else
                 {
-                    hits = ds.search(terms, 0);
+                    hits = ds.search(terms, 1);
                     displayProducts(hits);
                 }
             }
