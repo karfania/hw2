@@ -267,29 +267,31 @@ void MyDataStore::buyCart(std::string userName)
                 //std::deque<Product*>::iterator prodIt;
                 //for (prodIt = (userCartIt -> second).begin(); prodIt != (userCartIt -> second).end(); ++prodIt)
                 int countIterationsBound = (userCartIt -> second).size();
-                int index = 0;
+                //int index = 0;
                 while (countIterationsBound > 0)
                 {
-                    double prodPrice = (userCartIt -> second)[index] -> getPrice();
-                    int prodQty = (userCartIt -> second)[index] -> getQty();
+                    double prodPrice = (userCartIt -> second)[0] -> getPrice();
+                    int prodQty = (userCartIt -> second)[0] -> getQty();
 
                     // If the product is in stock AND the user can afford it,
                     // remove from cart, reduce quantity, and debit user
                     if (prodQty > 0 && ((userIt -> second -> getBalance()) - prodPrice >= 0))
                     {
-                        std::cout << "Purchased " << userCartIt -> second[index] -> getName() << std::endl;
-                        (userCartIt -> second)[index] -> subtractQty(1);
+                        std::cout << "Purchased " << userCartIt -> second[0] -> getName() << std::endl;
+                        (userCartIt -> second)[0] -> subtractQty(1);
                         userIt -> second -> deductAmount(prodPrice);
 
-                        // Once the item is popped, index doesn't change but count does
+                        // Purchased so pop it, therefore new front is what we are checking
                         (userCartIt -> second).pop_front();
                     }
 
-                    // If either condition isn't met, iterate index by 1 (doing nothing to item in cart)
+                    // If either condition isn't met, push_back item so it remains in cart, then pop to check new item
                     else
                     {
-                        std::cout << "Couldn't purchase " << userCartIt -> second[index] -> getName() << std::endl;
-                        index++;
+                        std::cout << "Couldn't purchase " << userCartIt -> second[0] -> getName() << std::endl;
+                        (userCartIt -> second).push_back(userCartIt ->second[0]);
+                        (userCartIt -> second).pop_front();
+                        
                     }
 
                     countIterationsBound--;

@@ -11,7 +11,7 @@
 
    (2) once in the container, navigate to code's main directory (```cd hw2/```)
 
-   (3) run ```make amazon``` in the terminal 
+   (3) run ```make``` in the terminal 
 
  #### Running the Code:
     ./amazon <filename.txt>
