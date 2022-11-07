@@ -227,7 +227,7 @@ void MyDataStore::viewCart(std::string userName)
             {
                 for (prodIt = (userCartIt -> second).begin(); prodIt != (userCartIt -> second).end(); ++prodIt)
                 {
-                    std::cout << "(" << count << ")" << std::endl;
+                    std::cout << "Item " << count << std::endl;
                     std::string prodOut = (*prodIt) -> displayString(); //or just product name ?
                     std::cout << prodOut << "\n" << std::endl;
                     count++;
